@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandora Experience</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Main Colors */
+        :root {
+            --primary-color: #c43131;
+            --primary-red: #c43131;
+            --secondary-color: #000000;
+            --text-light: #ffffff;
+            --text-dark: #111111;
+            --background-dark: #000000;
+        }
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 200px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            color: var(--primary-red);
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Impact', sans-serif;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-red);
+        }
+
+        .location-btn {
+            background-color: transparent;
+            border: 1px solid var(--primary-red);
+            color: var(--primary-red);
+            padding: 8px 20px;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .location-btn:hover {
+            background-color: var(--primary-red);
+            color: var(--text-light);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #000000, #2c0b0b);
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            color: var(--primary-red);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 40px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 50px;
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #a52828;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .section-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 800px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Inside Pandora Section */
+        .inside-pandora {
+            text-align: center;
+        }
+
+        /* Time Section */
+        .time-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .time-title {
+            font-size: 64px;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .time-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 500px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin: 80px 0;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        .column-title {
+            font-size: 48px;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .column-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dark-box {
+            background-color: #1a0a0a;
+            padding: 50px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-box::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(196, 49, 49, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 1;
+        }
+
+        /* Legends Section */
+        .legends-section {
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .legends-title {
+            font-size: 64px;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .legends-subtitle {
+            font-size: 18px;
+            margin-bottom: 60px;
+            font-style: italic;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .legends-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .legend-card {
+            width: 300px;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .legend-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .neverland-card {
+            background-color: #c43131;
+            position: relative;
+        }
+
+        .neverland-card::before {
+            content: "NEVERLAND";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .gonjiam-card {
+            background-color: #0f2b2b;
+            position: relative;
+        }
+
+        .gonjiam-card::before {
+            content: "THE GONJIAM ASYLUM";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .coven-card {
+            background-color: #492900;
+            position: relative;
+        }
+
+        .coven-card::before {
+            content: "COVEN";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .see-all-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--primary-red);
+            color: var(--primary-red);
+            background-color: transparent;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .see-all-btn:hover {
+            background-color: var(--primary-red);
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary-red);
+            position: relative;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            opacity: 0.7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary-red);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-red);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+
+        /* WhatsApp Icon */
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 99;
+            cursor: pointer;
+        }
+
+        /* Background for sections */
+        .dark-bg {
+            background-color: #000;
+            position: relative;
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: -100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 80px 0 40px;
+                flex-direction: column;
+                align-items: center;
+                transition: all 0.4s ease;
+                z-index: 99;
+            }
+
+            .nav-menu.active {
+                top: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                z-index: 100;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .two-column {
+                flex-direction: column;
+            }
+
+            .time-title, .column-title {
+                font-size: 42px;
+            }
+            
+            .legends-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .time-title, .column-title {
+                font-size: 32px;
+            }
+            
+            .legends-title {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-text">PANDORA</div>
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-menu">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#how-to">HOW TO</a></li>
+                <li><a href="#legends">LEGENDS</a></li>
+                <li><a href="#trailer">TRAILER</a></li>
+                <li><a href="#team-building">TEAM BUILDING</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+            <button class="location-btn">TAMAN ANGGREK MALL</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero dark-bg">
+        <div class="hero-content">
+            <h1 class="hero-title">TIME FOR AN <span>ADVENTURE</span></h1>
+            <p class="hero-subtitle">LIVE AND BREATHE THE MOST THRILLING ESCAPE GAME IN THE WORLD. IF YOU DARE!</p>
+            <button class="cta-button">BOOK NOW</button>
+        </div>
+    </section>
+
+    <!-- Inside Pandora Section -->
+    <section id="inside-pandora" class="section inside-pandora dark-bg">
+        <div class="container">
+            <h2 class="section-title">INSIDE PANDORA</h2>
+            <p class="section-text">
+                PLAYERS WILL WORK IN A TEAM TO SOLVE MYSTERIES, DISCOVER SECRET PASSAGES AND HIDDEN CHAMBERS. THE IMMERSIVE JOURNEY WILL TEST THE COURAGE, WITS AND TEAMWORK OF YOUR TEAM AS YOU RACE AGAINST TIME TO ESCAPE THE ROOM.
+            </p>
+        </div>
+    </section>
+
+    <!-- 120 Minutes Section -->
+    <section id="time" class="section time-section dark-bg">
+        <div class="container">
+            <div class="two-column">
+                <div class="column">
+                    <h2 class="time-title">120 MINUTES</h2>
+                    <p class="time-text">
+                        FOLLOW THROUGH EACH LEGEND'S COMPELLING STORYLINE AS YOUR TEAM EMBARKS ON A JOURNEY TO UNRAVEL ALL THE MYSTERIES WITHIN 120 MINUTES!
+                    </p>
+                    <button class="cta-button">BOOK NOW</button>
+                </div>
+                <div class="column">
+                    <!-- Colored box instead of image -->
+                    <div class="dark-box"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thrilling Atmosphere Section -->
+    <section id="atmosphere" class="section dark-bg">
+        <div class="container">
+            <div class="two-column">
+                <div class="column">
+                    <!-- Colored box instead of image -->
+                    <div class="dark-box"></div>
+                </div>
+                <div class="column">
+                    <h2 class="column-title">THRILLING ATMOSPHERE</h2>
+                    <p class="column-text">
+                        SOPHISTICATED ARCHITECTURE AND PREMIUM ROOM DESIGNS TO GUARANTEE A SUPER-REALISTIC SETTING. YOU'D FEEL EXACTLY LIKE IN THE MOVIES!
+                    </p>
+                    <button class="cta-button">WATCH TRAILER</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Immersive Experience Section -->
+    <section id="immersive" class="section dark-bg">
+        <div class="container">
+            <div class="two-column">
+                <div class="column">
+                    <h2 class="column-title">IMMERSIVE EXPERIENCE</h2>
+                    <p class="column-text">
+                        WELL-PROGRAMMED ROOMS, COMBINED WITH THE LATEST TECHNOLOGY AS WELL AS ENHANCED VISUAL AND SOUND EFFECTS, WE'RE TAKING ESCAPE GAME TO A WHOLE NEW LEVEL!
+                    </p>
+                </div>
+                <div class="column">
+                    <!-- Colored box instead of image -->
+                    <div class="dark-box"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legends Section (Added based on the screenshot) -->
+    <section id="legends" class="section legends-section dark-bg">
+        <div class="container">
+            <h2 class="legends-title">LEGENDS</h2>
+            <p class="legends-subtitle">SO MUCH FUN IT'S SCARY</p>
+            
+            <div class="legends-grid">
+                <div class="legend-card neverland-card">
+                    <!-- Red colored box for Neverland -->
+                </div>
+                
+                <div class="legend-card gonjiam-card">
+                    <!-- Dark teal colored box for Gonjiam Asylum -->
+                </div>
+                
+                <div class="legend-card coven-card">
+                    <!-- Orange-brown colored box for Coven -->
+                </div>
+            </div>
+            
+            <button class="see-all-btn">SEE ALL LEGENDS</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="footer-title">PANDORA EXPERIENCE</h3>
+                    <p style="color: #fff; opacity: 0.7; line-height: 1.6; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">
+                        THE PREMIER ESCAPE ROOM EXPERIENCE IN SOUTHEAST ASIA
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">ig</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">QUICK LINKS</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">HOME</a></li>
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="#legends">LEGENDS</a></li>
+                        <li><a href="#trailer">TRAILER</a></li>
+                        <li><a href="#team-building">TEAM BUILDING</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">OUR LOCATIONS</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">TAMAN ANGGREK MALL</a></li>
+                        <li><a href="#">CENTRAL PARK</a></li>
+                        <li><a href="#">KOTA KASABLANKA</a></li>
+                        <li><a href="#">GANDARIA CITY</a></li>
+                        <li><a href="#">SEE ALL LOCATIONS</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">CONTACT US</h3>
+                    <ul class="footer-links">
+                        <li>TAMAN ANGGREK MALL</li>
+                        <li>JAKARTA, INDONESIA</li>
+                        <li>PHONE: +123 456 7890</li>
+                        <li>EMAIL: INFO@PANDORAEXPERIENCE.COM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 PANDORA EXPERIENCE. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <div class="whatsapp-icon">W</div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            this.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
+                }
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.padding = '10px 0';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+                header.style.padding = '15px 0';
+            }
+        });
+    </script>
+</body>
+</html>

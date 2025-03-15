@@ -1,0 +1,539 @@
+/* MAIN COLORS */
+:root {
+    --primary-color: #234a59;
+    --secondary-color: #f5efe0;
+    --accent-color: #3a7d8c;
+    --text-color: #1d1d1d;
+    --footer-color: #0f2936;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Georgia', serif;
+  }
+
+/* OVERALL STYLES */
+body {
+    /* background-color: var(--secondary-color); */
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.wrapper, .content {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+  
+.content {
+    overflow-x: hidden;
+}
+  
+.content .section {
+    width: 100%;
+    height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+  
+.content .section.welcome {
+    background-image: url(https://images.unsplash.com/photo-1589848315097-ba7b903cc1cc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content .welcome-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: white;
+    opacity: 0; /* Hidden initially */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* FOR THE REAL CONTENT OF THE PAGE */
+.main-content {
+    background-color: var(--secondary-color);
+}
+  
+.image-cover {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    perspective: 500px;
+    overflow: hidden;
+}
+  
+.image-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* SECTION 1 */
+.hero {
+    padding: 80px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-content {
+    width: 50%;
+}
+
+.hero-title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+.hero-text {
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: #555;
+}
+
+.hero-image {
+    width: 45%;
+    height: 400px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.model-placeholder {
+    width: 200px;
+    height: 150px;
+    background-color: #8ba890;
+    position: relative;
+}
+
+.model-placeholder::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 60px solid #5d7561;
+}
+
+/* SECTION 2 */
+.work-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+.legends-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.legend-card {
+    width: 300px;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 0px;
+}
+
+.legend-card:hover {
+    transform: translateY(-10px);
+}
+
+.neverland-card {
+    background-color: #c43131;
+    position: relative;
+}
+
+.neverland-card::before {
+    content: "The 40s Era";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.gonjiam-card {
+    background-color: #0f2b2b;
+    position: relative;
+}
+
+.gonjiam-card::before {
+    content: "The 60s Era";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.coven-card {
+    background-color: #492900;
+    position: relative;
+}
+
+.coven-card::before {
+    content: "The 80s Era";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.kepler-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.gonjiam-card:hover .kepler-overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.neverland-card:hover .kepler-overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.coven-card:hover .kepler-overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.kepler-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #5a1b1b;
+    z-index: 1;
+}
+
+.kepler-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.kepler-title {
+    font-size: 36px;
+    color: white;
+    padding: 20px;
+    margin: 0;
+    font-weight: bold;
+    text-align: left;
+}
+
+.menu-item {
+    background-color: #e04245;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 20px;
+    margin-top: 8px;
+    transform: skew(0deg, -2deg);
+    position: relative;
+    z-index: 3;
+    font-style: italic;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item:nth-child(odd) {
+    background-color: #d13e3e;
+}
+
+.kepler-bottom {
+    margin-top: auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.tagline {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*  */
+.see-all-btn {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.see-all-btn:hover {
+    background-color: var(--accent-color);
+}
+
+/* SECTION 3 */
+.time-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.time-title {
+    font-size: 64px;
+    color: var(--primary-red);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.time-text {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 500px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Two Column Layout */
+.two-column {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin: 80px 0;
+}
+
+.column {
+    flex: 1;
+}
+
+.column-title {
+    font-size: 48px;
+    color: var(--primary-red);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.column-text {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dark-box {
+    background-color: #1a0a0a;
+    padding: 50px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.dark-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(196, 49, 49, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    z-index: 1;
+}
+
+/* SECTION 4 */
+.feature-section {
+    padding: 80px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feature-content {
+    width: 50%;
+}
+
+.feature-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.feature-text {
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: #555;
+}
+
+.feature-image {
+    width: 45%;
+    height: 350px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--footer-color);
+    color: white;
+    padding: 50px 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.footer-column h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* OTHER MEDIA SIZES */
+@media (max-width: 768px) {
+    .hero, .feature-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content, .feature-content, .hero-image, .feature-image {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .legends-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+        
+    .legend-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}

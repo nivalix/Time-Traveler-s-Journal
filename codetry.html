@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Portal - Exploring the Past</title>
+    <style>
+        :root {
+            --primary-color: #234a59;
+            --secondary-color: #f5efe0;
+            --accent-color: #3a7d8c;
+            --text-color: #1d1d1d;
+            --footer-color: #0f2936;
+        } */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        } 
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+            background-color: var(--secondary-color);
+            border-bottom: 1px solid #e1d9c9;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 16px;
+        }
+        
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .hero-content {
+            width: 50%;
+        }
+        
+        .hero-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-style: italic;
+        }
+        
+        .hero-text {
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: #555;
+        }
+        
+        .hero-image {
+            width: 45%;
+            height: 400px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .model-placeholder {
+            width: 200px;
+            height: 150px;
+            background-color: #8ba890;
+            position: relative;
+        }
+        
+        .model-placeholder::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 60px solid #5d7561;
+        }
+
+        .time-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .time-title {
+            font-size: 64px;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .time-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 500px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin: 80px 0;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        .column-title {
+            font-size: 48px;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .column-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dark-box {
+            background-color: #1a0a0a;
+            padding: 50px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-box::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(196, 49, 49, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 1;
+        }
+        
+        /* Work Gallery Section */
+        .work-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .legends-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+    
+        .legend-card {
+            width: 300px;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 0px;
+        }
+    
+        .legend-card:hover {
+            transform: translateY(-10px);
+        }
+    
+        .neverland-card {
+            background-color: #c43131;
+            position: relative;
+        }
+    
+        .neverland-card::before {
+            content: "The 40s Era";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+    
+        .gonjiam-card {
+            background-color: #0f2b2b;
+            position: relative;
+        }
+    
+        .gonjiam-card::before {
+            content: "The 60s Era";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+    
+        .coven-card {
+            background-color: #492900;
+            position: relative;
+        }
+    
+        .coven-card::before {
+            content: "The 80s Era";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .kepler-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 5;
+            pointer-events: none;
+        }
+    
+        .gonjiam-card:hover .kepler-overlay {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .neverland-card:hover .kepler-overlay {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .coven-card:hover .kepler-overlay {
+            opacity: 1;
+            pointer-events: all;
+        }
+    
+        .kepler-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #5a1b1b;
+            z-index: 1;
+        }
+    
+        .kepler-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .kepler-title {
+            font-size: 36px;
+            color: white;
+            padding: 20px;
+            margin: 0;
+            font-weight: bold;
+            text-align: left;
+        }
+    
+        .menu-item {
+            background-color: #e04245;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 20px;
+            margin-top: 8px;
+            transform: skew(0deg, -2deg);
+            position: relative;
+            z-index: 3;
+            font-style: italic;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+    
+        .menu-item:nth-child(odd) {
+            background-color: #d13e3e;
+        }
+    
+        .kepler-bottom {
+            margin-top: auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    
+        .tagline {
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+        }
+    
+        /* See all button styling to match Time Portal aesthetic */
+        .see-all-btn {
+            display: inline-block;
+            padding: 10px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    
+        .see-all-btn:hover {
+            background-color: var(--accent-color);
+        }
+    
+        /* Responsive adjustments to match Time Portal site */
+        @media (max-width: 768px) {
+            .legends-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .legend-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        /* Feature Sections */
+        .feature-section {
+            padding: 80px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .feature-content {
+            width: 50%;
+        }
+        
+        .feature-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .feature-text {
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: #555;
+        }
+        
+        .feature-image {
+            width: 45%;
+            height: 350px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--footer-color);
+            color: white;
+            padding: 50px 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .pagination-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .pagination-dot.active {
+            background-color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero, .feature-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content, .feature-content, .hero-image, .feature-image {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Time Portal</div>
+                <div class="nav-links">
+                    <a href="#">Home</a>
+                    <a href="#">Gallery</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </div>
+                <button class="cta-button">Log In</button>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Exploring the Past: A Journey Through Architecture</h1>
+                <p class="hero-text">Discover the rich history and cultural significance of historical buildings through our detailed 3D models and comprehensive guides.</p>
+                <button class="cta-button">Get Started</button>
+            </div>
+            <div class="hero-image">
+                <div class="model-placeholder"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="work-section">
+        <div class="container">
+            <h2 class="section-title">Discover Our Work</h2>
+            <div class="legends-grid">
+                <div class="legend-card neverland-card">
+                    <div class="kepler-overlay">
+                        <div class="kepler-menu">
+                            <div class="menu-item">Scenery</div>
+                            <div class="menu-item">Details</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="legend-card gonjiam-card">
+                    <div class="kepler-overlay">
+                        <div class="kepler-menu">
+                            <div class="menu-item">Scenery</div>
+                            <div class="menu-item">Details</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="legend-card coven-card">
+                    <div class="kepler-overlay">
+                        <div class="kepler-menu">
+                            <div class="menu-item">Scenery</div>
+                            <div class="menu-item">Details</div>
+                        </div>
+                    </div>
+                    <!-- Orange-brown colored box for Coven -->
+                </div>
+            </div>
+            <button class="see-all-btn">See All Projects</button>
+        </div>
+    </section>
+
+    <section id="time" class="section time-section dark-bg">
+        <div class="container">
+            <div class="two-column">
+                <div class="column">
+                    <h2 class="time-title">120 MINUTES</h2>
+                    <p class="time-text">
+                        FOLLOW THROUGH EACH LEGEND'S COMPELLING STORYLINE AS YOUR TEAM EMBARKS ON A JOURNEY TO UNRAVEL ALL THE MYSTERIES WITHIN 120 MINUTES!
+                    </p>
+                    <button class="cta-button">BOOK NOW</button>
+                </div>
+                <div class="column">
+                    <!-- Colored box instead of image -->
+                    <div class="dark-box"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thrilling Atmosphere Section -->
+    <section id="atmosphere" class="section dark-bg">
+        <div class="container">
+            <div class="two-column">
+                <div class="column">
+                    <!-- Colored box instead of image -->
+                    <div class="dark-box"></div>
+                </div>
+                <div class="column">
+                    <h2 class="column-title">THRILLING ATMOSPHERE</h2>
+                    <p class="column-text">
+                        SOPHISTICATED ARCHITECTURE AND PREMIUM ROOM DESIGNS TO GUARANTEE A SUPER-REALISTIC SETTING. YOU'D FEEL EXACTLY LIKE IN THE MOVIES!
+                    </p>
+                    <button class="cta-button">WATCH TRAILER</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Immersive Experience Section -->
+    <section id="immersive" class="section dark-bg">
+        <div class="container">
+            <div class="two-column">
+                <div class="column">
+                    <h2 class="column-title">IMMERSIVE EXPERIENCE</h2>
+                    <p class="column-text">
+                        WELL-PROGRAMMED ROOMS, COMBINED WITH THE LATEST TECHNOLOGY AS WELL AS ENHANCED VISUAL AND SOUND EFFECTS, WE'RE TAKING ESCAPE GAME TO A WHOLE NEW LEVEL!
+                    </p>
+                </div>
+                <div class="column">
+                    <!-- Colored box instead of image -->
+                    <div class="dark-box"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="feature-section">
+        <div class="container">
+            <div class="feature-content">
+                <h2 class="feature-title">Preserving the Past</h2>
+                <p class="feature-text">Our team of historians and 3D artists meticulously research and recreate architectural wonders from various periods, ensuring accuracy and authenticity in every detail.</p>
+                <button class="cta-button">Learn More</button>
+            </div>
+            <div class="feature-image">
+                <div class="model-placeholder"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="feature-section" style="flex-direction: row-reverse;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="feature-image">
+                <div class="model-placeholder"></div>
+            </div>
+            <div class="feature-content">
+                <h2 class="feature-title">Uncovering the Narratives of the Past</h2>
+                <p class="feature-text">Beyond the physical structures, we delve into the stories of the people who lived, worked, and created in these historic buildings, bringing history to life in a tangible and immersive way.</p>
+                <button class="cta-button">Explore Stories</button>
+            </div>
+        </div>
+    </section>
+    
+    <div class="pagination">
+        <div class="pagination-dot active"></div>
+        <div class="pagination-dot"></div>
+        <div class="pagination-dot"></div>
+        <div class="pagination-dot"></div>
+    </div>
+
+    
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Time Portal</h3>
+                    <p>Bridging the past and present through architectural exploration.</p>
+                    <div class="social-links">
+                        <div class="social-icon">F</div>
+                        <div class="social-icon">T</div>
+                        <div class="social-icon">I</div>
+                        <div class="social-icon">Y</div>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Collections</h3>
+                    <ul>
+                        <li><a href="#">Medieval</a></li>
+                        <li><a href="#">Renaissance</a></li>
+                        <li><a href="#">Victorian</a></li>
+                        <li><a href="#">Modern</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>info@timeportal.com</li>
+                        <li>+1 (555) 123-4567</li>
+                        <li>123 History Lane, Old Town</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple script for pagination dots
+        const dots = document.querySelectorAll('.pagination-dot');
+        
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+            });
+        });
+        
+        // Optional: Add functionality for gallery hover effects
+        const galleryItems = document.querySelectorAll('.gallery-item');

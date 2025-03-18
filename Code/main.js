@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .to("img", {
                 scale: 2,                  // Zoom in
-                z: 350,                    // Move forward (3D effect)
+                z: 380,                    // Move forward (3D effect)
+                filter: "blur(7px)",       // Blur effect
                 transformOrigin: "center center",
                 ease: "power1.inOut"
             })
@@ -44,7 +45,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 ".welcome-text", 
                 { y: 50, opacity: 0 },  // Start: below and invisible
                 { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" },  // End: visible and in position
-                "<"  // Starts slightly before the previous animation ends
+                "<"  // Run this animation at the same time as the previous one
             );
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menuItems = document.querySelectorAll(".menu-item");
+
+    menuItems.forEach(item => {
+        item.addEventListener("click", function () {
+            // console.log("Clicked:", this.getAttribute("data-target"));
+            const target = this.getAttribute("data-target");
+
+            if (target.startsWith("#")) {  
+                const targetElement = document.querySelector(target);
+                if (targetElement) {
+                    console.log("Scrolling to:", targetElement);
+                    targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+                } else {
+                    console.error("Target section not found:", target);
+                }
+            }
+        });
     });
 });

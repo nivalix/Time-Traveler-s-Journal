@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classical Era (1750–1830)</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <img src="https://imgs.classicfm.com/images/236642?crop=16_9&width=660&relax=1&format=webp&signature=s3jD9IU8usHJXjXtFDE058hiHoI=" alt="Classical Era Musicians" class="header-image" />
+
+  <div class="title">Classical Era</div>
+  <div class="titleYear">1750–1830</div>
+
+  <div class="description">
+    A symphony of elegance and refinement, where music was poetry and harmony a divine language.
+  </div>
+
+  <div class="hall-of-fame">
+    <h2>Hall of Fame</h2>
+
+    <div class="composer-container">
+      <button class="nav-button prev-composer">&lt;</button>
+      <div class="composer-frame">
+        <img src="/api/placeholder/130/160" alt="Composer" class="composer-image" id="composerImage" />
+      </div>
+      <button class="nav-button next-composer">&gt;</button>
+    </div>
+
+    <div class="composer-info" id="composerInfo">
+      <h3 id="composerName">Ludwig van Beethoven</h3>
+      <h3 id="composerYears">1770–1827</h3>
+      <p id="composerBio"></p>
+    </div>
+  </div>
+
+  <div class="vinyl-container" id="vinylContainer">
+    <div class="vinyl-disc" id="vinylDisc">
+      <div class="grooves">
+        <div class="groove" style="width: 85%; height: 85%;"></div>
+        <div class="groove" style="width: 75%; height: 75%;"></div>
+        <div class="groove" style="width: 65%; height: 65%;"></div>
+        <div class="groove" style="width: 55%; height: 55%;"></div>
+        <div class="groove" style="width: 45%; height: 45%;"></div>
+      </div>
+    </div>
+    <div class="play-button" id="playButton"></div>
+  </div>
+
+  <div class="track-info" id="trackInfo">Für Elise by Ludwig van Beethoven</div>
+
+  <audio id="musicPlayer">
+    <source src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Beethoven_-_F%C3%BCr_Elise.ogg" type="audio/ogg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Cultural Snapshots -->
+  <div class="content-section">
+    <h2 class="section-title">Cultural Snapshots</h2>
+    <div class="cultural-snapshot">
+      <p>I attended a royal concert at the Schönbrunn Palace last evening — what an extraordinary affair! 
+        The orchestra was positioned in the center of the grand ballroom, surrounded by nobility in their finest attire. 
+        Mozart was conducting, his small stature belying his commanding presence. When the music began, it was as if time stood still. 
+        The candlelight flickered in perfect harmony with the delicate melodies that floated through the air. 
+        I noticed the Empress herself with eyes closed, completely transported by the beauty of it all.</p>
+      <p class="snapshot-date">— Vienna, April 12, 1786</p>
+    </div>
+    <div class="cultural-snapshot">
+      <p>Beethoven performed at Count Razumovsky's salon tonight. 
+        Such passion! Such fury! He hunched over the pianoforte like a man possessed, his fingers moving with supernatural speed. 
+        The audience sat in stunned silence, some appeared unsettled by the emotional intensity of the piece. 
+        When he finished, he stood abruptly, gave a curt bow, and left without a word. 
+        The Count later told me the maestro is growing increasingly deaf — how tragic that such a musical genius can no longer fully hear his own magnificent creations.</p>
+      <p class="snapshot-date">— Vienna, January 7, 1809</p>
+    </div>
+  </div>
+
+  <!-- Did You Know -->
+  <div class="content-section">
+    <h2 class="section-title">Did You Know?</h2>
+    <div class="trivia-container">
+      <div class="trivia-card">
+        <h4>Mozart's Prolific Career</h4>
+        <p>Composed over 600 works by age 35.</p>
+      </div>
+      <!-- Add other trivia cards here -->
+    </div>
+  </div>
+
+  <script src="js\script.js"></script>
+</body>
+</html>

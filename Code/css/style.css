@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital@0;1&display=swap');
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'EB Garamond', 'Georgia', serif;
+}
+
+body {
+    background-color:#f5efe0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.header-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 2px solid #8b7d6b;
+    filter: sepia(30%);
+}
+
+.title {
+    background-color: #5c4d3e;
+    color: #1d1d1d;
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    line-height: 1;
+}
+
+.description {
+    background-color: #85725e;
+    color: #f4ebd9;
+    padding: 18px;
+    margin: 20px 10px;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 1px solid #a39075;
+}
+
+.hall-of-fame {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.hall-of-fame h2 {
+    color: #5c4d3e;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.hall-of-fame h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background-color: #a39075;
+}
+
+.composer-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.composer-frame {
+    width: 150px;
+    height: 180px;
+    border: 12px solid #b69d74;
+    background-color: #f4ebd9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    position: relative;
+}
+
+.composer-frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+    pointer-events: none;
+}
+
+.composer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(20%);
+}
+
+#composerName, #composerYears {
+    line-height: 1;
+  }
+
+.nav-button {
+    background: none;
+    border: none;
+    color: #5c4d3e;
+    font-size: 2.2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 15px;
+}
+
+.nav-button:hover {
+    color: #a39075;
+    text-shadow: 0 0 5px rgba(92, 77, 62, 0.3);
+}
+
+.composer-info {
+    margin-top: 15px;
+    color: #5c4d3e;
+    text-align: center;
+    min-height: 130px;
+    background-color: rgba(244, 235, 217, 0.7);
+    padding: 15px;
+    border-radius: 3px;
+    border: 1px solid #d5c7b2;
+}
+
+.composer-info h3 {
+    margin-bottom: 5px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #5c4d3e;
+}
+
+.composer-info p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.vinyl-container {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 30px 0;
+    cursor: pointer;
+}
+
+.vinyl-disc {
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.vinyl-disc::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 30%;
+    background-color: #444;
+    border-radius: 50%;
+}
+
+.vinyl-disc::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10%;
+    height: 10%;
+    background-color: #1a1a1a;
+    border-radius: 50%;
+}
+
+.vinyl-disc.spinning {
+    animation: spin 5s linear infinite;
+}
+
+.play-button {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 50px;
+    height: 50px;
+    background-color: #b69d74;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.play-button::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid #f4ebd9;
+    margin-left: 5px;
+}
+
+.play-button.paused::before {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: transparent;
+    position: relative;
+    margin-left: 0;
+}
+
+.play-button.paused::before,
+.play-button.paused::after {
+    content: '';
+    width: 6px;
+    height: 20px;
+    background-color: #f4ebd9;
+    position: absolute;
+}
+
+.play-button.paused::before {
+    left: 15px;
+}
+
+.play-button.paused::after {
+    right: 15px;
+}
+
+.track-info {
+    color: #5c4d3e;
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+    background-color: rgba(244, 235, 217, 0.7);
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid #d5c7b2;
+    font-size: 1.1rem;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.grooves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.groove {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(100, 100, 100, 0.3);
+    transform: translate(-50%, -50%);
+}
+
+.content-section {
+    width: 100%;
+    padding: 0 15px;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    color: #5c4d3e;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 20%;
+    width: 60%;
+    height: 2px;
+    background-color: #a39075;
+}
+
+.cultural-snapshot {
+    background-color: #f4ebd9;
+    padding: 20px;
+    border-radius: 3px;
+    position: relative;
+    border: 1px solid #d5c7b2;
+    font-style: italic;
+    color: #5c4d3e;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.cultural-snapshot::before {
+    content: '"';
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 60px;
+    color: #d5c7b2;
+    font-family: 'Playfair Display', serif;
+    line-height: 0.8;
+}
+
+.snapshot-date {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 10px;
+    font-style: normal;
+}
+
+.trivia-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.trivia-card {
+    flex: 1 1 calc(50% - 15px);
+    min-width: 150px;
+    background-color: #f4ebd9;
+    border: 1px solid #d5c7b2;
+    border-radius: 3px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.trivia-card h4 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+    color: #5c4d3e;
+    font-size: 1.1rem;
+}
+
+.trivia-card p {
+    color: #5c4d3e;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.trivia-card::before {
+    content: '★';
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    color: #b69d74;
+    font-size: 14px;
+}

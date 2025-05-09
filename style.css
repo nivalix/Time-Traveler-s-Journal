@@ -43,7 +43,7 @@ body {
 }
   
 .content .section.welcome {
-    background-image: url(/Assets/Background.jpg);
+    background-image: url(/Assets/Homepage/Background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

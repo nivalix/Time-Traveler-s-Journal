@@ -14,48 +14,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Wait for the full page to load
     window.addEventListener("load", () => {
-        gsap
-            .timeline({
-                scrollTrigger: {
-                    trigger: ".wrapper",   // Element that triggers the animation
-                    start: "top top",      // When the animation starts
-                    end: "+=150%",         // When the animation ends
-                    pin: true,             // Keeps the element fixed while scrolling
-                    scrub: true,           // Smooth scrolling effect
-                    // markers: true          // Debug markers (remove in production)
-                }
-            })
+
+        const introTimeline = gsap.timeline();
+
+        introTimeline
             .to("img", {
                 scale: 2,                  // Zoom in
                 z: 380,                    // Move forward (3D effect)
                 filter: "blur(7px)",       // Blur effect
                 transformOrigin: "center center",
-                ease: "power1.inOut"
+                duration: 2,
+                ease: "power2.inOut"
+                // ease: "power1.inOut"
             })
             .to(
                 ".section.welcome",
                 {
                     scale: 1.1,            // Slight zoom in on the hero section
                     transformOrigin: "center center",
+                    duration: 1.5,
                     ease: "power1.inOut"
                 },
                 "<"  // Run this animation at the same time as the previous one
             )
+            // The intro-text
             .fromTo(
                 ".welcome-text", 
                 { y: 50, opacity: 0 },  // Start: below and invisible
                 { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" },  // End: visible and in position
                 "<"  // Run this animation at the same time as the previous one
-            );
-    });
-});
+            )
 
-document.addEventListener("DOMContentLoaded", function () {
+            .add(() => {
+                // Auto scroll down after the intro finishes
+                gsap.to(window, {
+                    duration: 1.5,
+                    scrollTo: {
+                        y: ".main-content",
+                        offsetY: 0 // Adjust if needed for sticky headers
+                    },
+                    ease: "power2.inOut"
+                });
+            });
+    });
+
     const menuItems = document.querySelectorAll(".menu-item");
 
     menuItems.forEach(item => {
         item.addEventListener("click", function () {
-            // console.log("Clicked:", this.getAttribute("data-target"));
             const target = this.getAttribute("data-target");
 
             if (target.startsWith("#")) {  

@@ -13,6 +13,10 @@
       color: #333;
       overflow-x: hidden;
     }
+
+    body::-webkit-scrollbar {
+      display: none;
+    }
     
     .header {
       width: 100%;
@@ -52,8 +56,8 @@
     }
     
     .spinning-text-container {
-      width: 400px;
-      height: 400px;
+      width: 600px;
+      height: 600px;
       position: relative;
     }
     
@@ -76,6 +80,7 @@
       }
     }
     
+    /*
     .instrument {
       position: absolute;
       width: auto;
@@ -106,10 +111,13 @@
       bottom: 20px;
       left: 30px;
     }
+    */
     
     .hall-of-fame {
       width: 100%;
       height: 100vh;
+      margin-top: 50px;
+      margin-bottom: 50px;
       padding: 40px 0;
       text-align: center;
       background-color: #f5f2e9;
@@ -124,28 +132,7 @@
       padding-bottom: 10px;
       display: inline-block;
     }
-    
-    .carousel-wrapper {
-        margin-top: 80px; 
-    }
 
-    .carousel-container {
-      position: relative;
-      height: 350px;
-      margin: 0 auto;
-      overflow: visible;
-      width: 90%;
-    }
-    
-    .carousel {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-    
     .composer {
         position: absolute;
         transition: all 0.6s ease;
@@ -168,7 +155,6 @@
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    
     .composer p {
       margin-top: 10px;
       margin-bottom: 10px;
@@ -183,8 +169,36 @@
         margin-bottom: 20px; /* add more bottom spacing */
     }
     
+    
+    .carousel-wrapper {
+        margin-top: 80px; 
+    }
+
+    .carousel-container {
+      position: relative;
+      height: 350px;
+      margin: 0 auto;
+      overflow: visible;
+      width: 90%;
+    }
+    
+    .carousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
     .nav-buttons {
-      margin-top: 30px;
+      position: absolute;
+      top: 40%;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
     }
     
     .nav-btn {
@@ -196,6 +210,7 @@
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
+      z-index: 20;
     }
     
     .nav-btn:hover {
@@ -216,16 +231,16 @@
           <defs>
             <path id="circle-text-path" d="M 250,250 m -150,0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0" />
           </defs>
-          <text fill="#c0392b" font-size="22" font-weight="bold" letter-spacing="2">
+          <text fill="#c0392b" font-size="20.5" font-weight="bold" letter-spacing="2">
             <textPath href="#circle-text-path">• MUSIC IS THE POETRY OF THE AIR • MUSIC IS THE POETRY OF THE AIR •</textPath>
           </text>
         </svg>
       </div>
-      <img class="instrument violin" src="/api/placeholder/60/60" alt="Violin">
-      <img class="instrument piano" src="/api/placeholder/60/60" alt="Piano">
-      <img class="instrument horn" src="/api/placeholder/60/60" alt="French Horn">
-      <img class="instrument clarinet" src="/api/placeholder/60/60" alt="Clarinet">
-      <img class="instrument trumpet" src="/api/placeholder/60/60" alt="Trumpet">
+      <!-- <img class="instrument violin" src="/api/placeholder/60/60" alt="Violin"> -->
+      <!-- <img class="instrument piano" src="/api/placeholder/60/60" alt="Piano"> -->
+      <!-- <img class="instrument horn" src="/api/placeholder/60/60" alt="French Horn"> -->
+      <!-- <img class="instrument clarinet" src="/api/placeholder/60/60" alt="Clarinet"> -->
+      <!-- <img class="instrument trumpet" src="/api/placeholder/60/60" alt="Trumpet"> -->
     </div>
   </div>
   
@@ -270,30 +285,31 @@
                 <div class="subtitle">1782-1840</div>
             </div>
         </div>
+          <div class="nav-buttons">
+            <button class="nav-btn prev-btn"><</button>
+            <button class="nav-btn next-btn">></button>
+          </div>
       </div>  
     </div>
     
-    <div class="nav-buttons">
-      <button class="nav-btn prev-btn">Previous</button>
-      <button class="nav-btn next-btn">Next</button>
-    </div>
+    
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const composers = document.querySelectorAll('.composer');
       const totalComposers = composers.length;
-      let currentIndex = 2; // Start with middle composer active
+      let currentIndex = 2; //start with middle composer active
       
       function updateCarousel() {
         composers.forEach((composer, index) => {
           composer.classList.remove('active');
           
-          // Calculate positions based on distance from current
+          //calculate disantce
           const distance = calculateDistance(index, currentIndex, totalComposers);
           
           if (distance === 0) {
-            // Center (active) composer
+            //center composer
             composer.style.left = '50%';
             composer.style.opacity = '1';
             composer.style.transform = 'translateX(-50%) scale(1.2)';
@@ -314,7 +330,7 @@
             composer.style.transform = 'translateX(-50%) scale(0.8)';
             composer.style.zIndex = 1;
           } else {
-            // Smoothly fade and slide out hidden composers
+            //smooth fade out
             composer.style.opacity = '0';
             composer.style.transform = 'translateX(-50%) scale(0.7)';
             composer.style.left = '50%'; // keep them centered to avoid layout jumps
@@ -349,7 +365,7 @@
       document.querySelector('.prev-btn').addEventListener('click', prevComposer);
       
       // Auto rotate every 5 seconds
-      // setInterval(nextComposer, 5000);
+      //setInterval(nextComposer, 5000);
     });
   </script>
 </body>

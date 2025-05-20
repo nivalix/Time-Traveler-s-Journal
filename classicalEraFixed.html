@@ -166,9 +166,8 @@
         font-size: 14px;
         font-style: italic;
         margin-top: 5px;
-        margin-bottom: 20px; /* add more bottom spacing */
+        margin-bottom: 20px; 
     }
-    
     
     .carousel-wrapper {
         margin-top: 80px; 
@@ -342,10 +341,8 @@
             
           </div>
         </div>
-          
       </div>
     </div>
-    
   </div>
 
   <script>
@@ -369,7 +366,7 @@
             composer.classList.add('active');
             composer.style.zIndex = 10;
           } else if (distance === -1 || distance === 1) {
-            // Immediate neighbors
+            //immediate neighbors
             const direction = distance < 0 ? -1 : 1;
             composer.style.left = 50 + (direction * 20) + '%';
             composer.style.opacity = '0.8';
@@ -410,14 +407,14 @@
         updateCarousel();
       }
       
-      // Initialize carousel
+      //initialize carousel
       updateCarousel();
       
-      // Add event listeners
+      //add event listeners
       document.querySelector('.next-btn').addEventListener('click', nextComposer);
       document.querySelector('.prev-btn').addEventListener('click', prevComposer);
       
-      // Auto rotate every 5 seconds
+      //auto rotate every 5 seconds
       //setInterval(nextComposer, 5000);
 
       const sentences = [
@@ -461,7 +458,7 @@
           charIndex = 0;
           currentLine = null;
           if (sentenceIndex < sentences.length) {
-            setTimeout(typeNextChar, 1000); // Pause 1s between lines
+            setTimeout(typeNextChar, 1000); //pause 1s between lines
           }
         }
       }

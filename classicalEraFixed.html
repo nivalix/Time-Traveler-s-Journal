@@ -245,8 +245,6 @@
       text-align: center;
     }
       
-    
-    
     .fade-in {
       opacity: 0;
       transition: opacity 0.3s ease;
@@ -256,6 +254,50 @@
       opacity: 1;
     }
     
+    #fun-fact-h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .section-4-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #text-box {
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+    }
+
+    #text-box.show {
+      opacity: 1;
+    }
+
+    button {
+      animation: welcome-in 0.5s ease-in-out;
+      background: none;
+      font-size: 1em;
+      padding: 7px;
+      box-shadow: 5px 5px 0 1px black;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      box-shadow: 3px 3px 0 1px black;
+      transform: translateX(2px) translateY(2px);
+    }
+
+    button:active {
+      box-shadow: none;
+      transform: translateX(5px) translateY(5px);
+    }
 
   </style>
 </head>
@@ -331,19 +373,23 @@
             <button class="nav-btn next-btn">></button>
           </div>
       </div>  
-    </div>
-    
-    <div class="section-4">
-      <div class="section-4-wrapper">
-        <h2>Fun Fact</h2>
-        <div class="text-box">
-          <div id="text-output">
-            
-          </div>
+    </div> 
+  </div>
+
+  <div class="section-4">
+    <div class="section-4-wrapper">
+      <div class="section-4-title">
+        <h2 id="fun-fact-h2">Fun Fact</h2>
+        <div style="display: flex; gap: 10px;">
+          <button type="button" id="start-btn">Start</button>
         </div>
+      </div>
+      <div class="text-box" id="text-box" style="display: none;">
+        <div id="text-output"></div>
       </div>
     </div>
   </div>
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -417,55 +463,68 @@
       //auto rotate every 5 seconds
       //setInterval(nextComposer, 5000);
 
+
+      // section 4 - animated fun fact text
+      
       const sentences = [
-        "Did you know? Beethoven continued to compose music even after losing his hearing.",
-        "Beethoven initially intended to dedicate his third symphony, the “Eroica,” to Napoleon Bonaparte, but scratched out the dedication when he learned that Napoleon had declared himself emperor.",
-        "Mozart was only 6 years old when he began composing music and was already performing for European royalty at age 8.",
-        "Bach had 20 children, many of whom went on to become successful musicians themselves.",
-        "The famous composer Franz Liszt was known for his showmanship as a pianist, often leaping off the piano bench and playing with incredible speed and dexterity.",
-        "The opera “The Barber of Seville” by Rossini was originally a flop, receiving poor reviews and low ticket sales, but later became one of the most beloved operas of all time.",
-        "The legendary composer and pianist Chopin suffered from tuberculosis and died at the young age of 39.",
-        "The famous “Wedding March” by Mendelssohn, commonly played at weddings today, was originally part of his incidental music for a production of Shakespeare’s “A Midsummer Night’s Dream.”",
-        "Tchaikovsky’s “1812 Overture” includes actual cannons as part of the instrumentation and is often performed as a patriotic piece in Russia.",
-        "Beethoven’s Ninth Symphony, with its iconic “Ode to Joy” finale, was the first major symphony to include a chorus singing in addition to the orchestra.",
-        "The “Moonlight” Sonata, one of Beethoven’s most famous piano pieces, was not given its nickname by the composer himself but rather by a music critic several years after Beethoven’s death."
-      ];
+          "Did you know? Beethoven continued to compose music even after losing his hearing.",
+          "Beethoven initially intended to dedicate his third symphony, the “Eroica,” to Napoleon Bonaparte, but scratched out the dedication when he learned that Napoleon had declared himself emperor.",
+          "Mozart was only 6 years old when he began composing music and was already performing for European royalty at age 8.",
+          "Bach had 20 children, many of whom went on to become successful musicians themselves.",
+          "The famous composer Franz Liszt was known for his showmanship as a pianist, often leaping off the piano bench and playing with incredible speed and dexterity.",
+          "The opera “The Barber of Seville” by Rossini was originally a flop, receiving poor reviews and low ticket sales, but later became one of the most beloved operas of all time.",
+          "The legendary composer and pianist Chopin suffered from tuberculosis and died at the young age of 39.",
+          "The famous “Wedding March” by Mendelssohn, commonly played at weddings today, was originally part of his incidental music for a production of Shakespeare’s “A Midsummer Night’s Dream.”",
+          "Tchaikovsky’s “1812 Overture” includes actual cannons as part of the instrumentation and is often performed as a patriotic piece in Russia.",
+          "Beethoven’s Ninth Symphony, with its iconic “Ode to Joy” finale, was the first major symphony to include a chorus singing in addition to the orchestra.",
+          "The “Moonlight” Sonata, one of Beethoven’s most famous piano pieces, was not given its nickname by the composer himself but rather by a music critic several years after Beethoven’s death."
+        ];
 
       const textDiv = document.getElementById("text-output");
+      const textBox = document.getElementById("text-box");
+      const startBtn = document.getElementById("start-btn");
+
       const speed = 30;
       let sentenceIndex = 0;
       let charIndex = 0;
       let currentLine;
+      let typingStarted = false;
 
-      function typeNextChar() {
-        if (!currentLine) {
-          currentLine = document.createElement("div");
-          currentLine.classList.add("line");
-          textDiv.appendChild(currentLine);
-        }
-
-        const sentence = sentences[sentenceIndex];
-        if (charIndex < sentence.length) {
-          const span = document.createElement("span");
-          span.textContent = sentence[charIndex];
-          span.classList.add("fade-in");
-          currentLine.appendChild(span);
-          requestAnimationFrame(() => span.classList.add("show"));
-          charIndex++;
-          setTimeout(typeNextChar, speed);
-        } else {
-          sentenceIndex++;
-          charIndex = 0;
-          currentLine = null;
-          if (sentenceIndex < sentences.length) {
-            setTimeout(typeNextChar, 1000); //pause 1s between lines
-          }
-        }
+    function typeNextChar() {
+      if (!currentLine) {
+        currentLine = document.createElement("div");
+        currentLine.classList.add("line");
+        textDiv.appendChild(currentLine);
       }
 
-      window.addEventListener("load", typeNextChar);
+      const sentence = sentences[sentenceIndex];
+      if (charIndex < sentence.length) {
+        const span = document.createElement("span");
+        span.textContent = sentence[charIndex];
+        span.classList.add("fade-in");
+        currentLine.appendChild(span);
+        requestAnimationFrame(() => span.classList.add("show"));
+        charIndex++;
+        setTimeout(typeNextChar, speed);
+      } else {
+        sentenceIndex++;
+        charIndex = 0;
+        currentLine = null;
+        if (sentenceIndex < sentences.length) {
+          setTimeout(typeNextChar, 1000);
+        }
       }
-    );
-  </script>
+    }
+
+    startBtn.addEventListener("click", () => {
+      if (!typingStarted) {
+        typingStarted = true;
+        textBox.style.display = "block";
+        textBox.classList.add("show");
+        typeNextChar();
+      }
+    });
+  });
+</script>
 </body>
 </html>

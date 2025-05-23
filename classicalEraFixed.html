@@ -44,10 +44,11 @@
       text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
     }
     
+    /*section 2*/
     .center-section {
       width: 100%;
       height: 100vh;
-      background-color: white;
+      background-color: #f5efe0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -79,7 +80,40 @@
         transform: translate(-50%, -50%) rotate(360deg);
       }
     }
-    
+
+    .music-button {
+      animation: welcome-in 0.5s ease-in-out;
+      background: none;
+      font-size: 1em;
+      padding: 7px;
+      box-shadow: 5px 5px 0 1px black;
+      transition: 0.2s;
+      border: none;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+
+    .music-button:hover {
+      box-shadow: 3px 3px 0 1px black;
+      transform: translate(-48%, -48%); 
+    }
+
+    .music-button:active {
+      box-shadow: none;
+      transform: translate(-45%, -45%); 
+    }
+
     /*
     .instrument {
       position: absolute;
@@ -113,6 +147,7 @@
     }
     */
     
+    /* section 3 */
     .hall-of-fame {
       width: 100%;
       height: 100vh;
@@ -217,6 +252,7 @@
       background-color: #1a2a3a;
     }
 
+    /* section 4*/
     .section-4 {
       width: 100%;
       height: 100vh;
@@ -243,7 +279,7 @@
       line-height: 2;
       max-width: 900px;
       margin: 0 auto;
-      text-align: center;
+      text-align: left;
     }
       
     .fade-in {
@@ -311,6 +347,18 @@
   
   <div class="center-section">
     <div class="spinning-text-container">
+      <button id="music-play-btn" class="music-button">
+        <svg id="play-icon" width="38" height="38" viewBox="0 0 38 38" fill="none" style="display: block;">
+          <circle cx="19" cy="19" r="18" stroke="#c0392b" stroke-width="2"/>
+          <polygon points="14,11 28,19 14,27" fill="#c0392b"/>
+        </svg>
+        <svg id="pause-icon" width="38" height="38" viewBox="0 0 38 38" fill="none" style="display: none;">
+          <circle cx="19" cy="19" r="18" stroke="#c0392b" stroke-width="2"/>
+          <rect x="13" y="11" width="4" height="16" fill="#c0392b"/>
+          <rect x="21" y="11" width="4" height="16" fill="#c0392b"/>
+        </svg>
+        <audio id="music-audio" src="Assets/Homepage/Fur élise - RAW.mp3"></audio>
+      </button>
       <div class="spinning-text">
         <svg viewBox="0 0 500 500">
           <defs>
@@ -395,6 +443,35 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      const playBtn = document.getElementById('music-play-btn');
+      const audio = document.getElementById('music-audio');
+      let isPlaying = false;
+
+      playBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (!isPlaying) {
+          audio.play();
+          isPlaying = true;
+          playBtn.style.opacity = '0.6';
+          document.getElementById('play-icon').style.display = 'none';
+          document.getElementById('pause-icon').style.display = 'block';
+        } else {
+          audio.pause();
+          isPlaying = false;
+          playBtn.style.opacity = '1';
+          document.getElementById('play-icon').style.display = 'block';
+          document.getElementById('pause-icon').style.display = 'none';
+        }
+        });
+
+        audio.addEventListener('ended', function() {
+          isPlaying = false;
+          playBtn.style.opacity = '1';
+        });
+      });
+
+    // section 3 - carousel of composers
+    document.addEventListener('DOMContentLoaded', function() {
       const composers = document.querySelectorAll('.composer');
       const totalComposers = composers.length;
       let currentIndex = 2; //start with middle composer active
@@ -468,17 +545,17 @@
       // section 4 - animated fun fact text
       
       const sentences = [
-          "Did you know? Beethoven continued to compose music even after losing his hearing.",
-          "Beethoven initially intended to dedicate his third symphony, the “Eroica,” to Napoleon Bonaparte, but scratched out the dedication when he learned that Napoleon had declared himself emperor.",
-          "Mozart was only 6 years old when he began composing music and was already performing for European royalty at age 8.",
-          "Bach had 20 children, many of whom went on to become successful musicians themselves.",
-          "The famous composer Franz Liszt was known for his showmanship as a pianist, often leaping off the piano bench and playing with incredible speed and dexterity.",
-          "The opera “The Barber of Seville” by Rossini was originally a flop, receiving poor reviews and low ticket sales, but later became one of the most beloved operas of all time.",
-          "The legendary composer and pianist Chopin suffered from tuberculosis and died at the young age of 39.",
-          "The famous “Wedding March” by Mendelssohn, commonly played at weddings today, was originally part of his incidental music for a production of Shakespeare’s “A Midsummer Night’s Dream.”",
-          "Tchaikovsky’s “1812 Overture” includes actual cannons as part of the instrumentation and is often performed as a patriotic piece in Russia.",
-          "Beethoven’s Ninth Symphony, with its iconic “Ode to Joy” finale, was the first major symphony to include a chorus singing in addition to the orchestra.",
-          "The “Moonlight” Sonata, one of Beethoven’s most famous piano pieces, was not given its nickname by the composer himself but rather by a music critic several years after Beethoven’s death."
+          "• Did you know? Beethoven continued to compose music even after losing his hearing.",
+          "• Beethoven initially intended to dedicate his third symphony, the “Eroica,” to Napoleon Bonaparte, but scratched out the dedication when he learned that Napoleon had declared himself emperor.",
+          "• Mozart was only 6 years old when he began composing music and was already performing for European royalty at age 8.",
+          "• Bach had 20 children, many of whom went on to become successful musicians themselves.",
+          "• The famous composer Franz Liszt was known for his showmanship as a pianist, often leaping off the piano bench and playing with incredible speed and dexterity.",
+          "• The opera “The Barber of Seville” by Rossini was originally a flop, receiving poor reviews and low ticket sales, but later became one of the most beloved operas of all time.",
+          "• The legendary composer and pianist Chopin suffered from tuberculosis and died at the young age of 39.",
+          "• The famous “Wedding March” by Mendelssohn, commonly played at weddings today, was originally part of his incidental music for a production of Shakespeare’s “A Midsummer Night’s Dream.”",
+          "• Tchaikovsky’s “1812 Overture” includes actual cannons as part of the instrumentation and is often performed as a patriotic piece in Russia.",
+          "• Beethoven’s Ninth Symphony, with its iconic “Ode to Joy” finale, was the first major symphony to include a chorus singing in addition to the orchestra.",
+          "• The “Moonlight” Sonata, one of Beethoven’s most famous piano pieces, was not given its nickname by the composer himself but rather by a music critic several years after Beethoven’s death."
         ];
 
       const textDiv = document.getElementById("text-output");

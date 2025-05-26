@@ -40,8 +40,121 @@
       width: 100%;
       height: 100vh;
       background-color: #f5efe0;
+      text-align: center;
+      /*overflow: hidden;*/
+    }
+
+    .section-2 h2 {
+      font-size: 28px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .composer {
+      position: absolute;
+      transition: all 0.6s ease;
+      width: 180px;
+      opacity: 0.7;
+      transform: translateX(-50%) scale(1);
+    }
+
+    .composer.active {          
+        z-index: 10;
+        opacity: 1;
+        transform: translateX(-50%) scale(1.3); /* enlarge proportionally */
+    }
+
+    .composer img {
+        width: 100%;
+        height: 240px;              /* set consistent height */
+        object-fit: cover;          /* maintain ratio and crop if needed */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .composer p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    
+    .composer .subtitle {
+        font-size: 14px;
+        font-style: italic;
+        margin-top: 5px;
+        margin-bottom: 20px; 
+    }
+    
+    .carousel-wrapper {
+        margin-top: 80px; 
+    }
+
+    .carousel-container {
       position: relative;
-      overflow: hidden;
+      height: 350px;
+      margin: 0 auto;
+      overflow: visible;
+      width: 90%;
+    }
+    
+    .carousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .nav-buttons {
+      position: absolute;
+      top: 40%;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    
+    /*.nav-btn {
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      margin: 0 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      z-index: 20;
+    }
+    
+    .nav-btn:hover {
+      background-color: #1a2a3a;
+    }*/
+    
+    button {
+      animation: welcome-in 0.5s ease-in-out;
+      background: none;
+      font-size: 1em;
+      padding: 7px;
+      box-shadow: 5px 5px 0 1px black;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      box-shadow: 3px 3px 0 1px black;
+      transform: translateX(2px) translateY(2px);
+    }
+
+    button:active {
+      box-shadow: none;
+      transform: translateX(5px) translateY(5px);
     }
 
     .section-3{
@@ -60,10 +173,121 @@
     </div>
 
     <div class="section-2">
-
+      <h2>Hall of Fame</h2>
+      <div class="carousel-wrapper">
+        <div class="carousel-container">
+          <div class="carousel">
+              <div class="composer" id="musician-1">
+                  <img src="https://s-media-cache-ak0.pinimg.com/736x/d1/37/8c/d1378c459d24020209367bc80b5f47d0.jpg" alt="Billy Joel">
+                  <p>Billy Joel</p>
+                  <div class="subtitle">1949-Now</div>
+              </div>
+              <div class="composer" id="musician-2">
+                  <img src="https://th.bing.com/th/id/OIP.qSeCkjY_k4Yw2KLi7KwkvwHaJ4?pid=ImgDet&w=185&h=246&c=7&dpr=1,3" alt="Madonna">
+                  <p>Madonna</p>
+                  <div class="subtitle">1958-Now</div>
+              </div>
+              <div class="composer" id="musician-3">
+                  <img src="https://th.bing.com/th/id/R.6f8dac31b1f1b7e3179f0432e270629d?rik=BfqjIboD3EUy5Q&riu=http%3a%2f%2fwww.theplace2.ru%2farchive%2fmichael_jackson%2fimg%2fmdzh16.jpg&ehk=77u5xw0oHpGm%2b%2bzCvqrF9ElJf5wPlfq2Qj7605CJIvc%3d&risl=&pid=ImgRaw&r=0" alt="Michael Jackson">
+                  <p>Michael Jackson</p>
+                  <div class="subtitle">1958-2009 </div>
+              </div>
+              <div class="composer" id="musician-4">
+                  <img src="https://pbs.twimg.com/media/D-KHM2oX4AEp5je?format=jpg&name=large" alt="David Bowie">
+                  <p>David Bowie</p>
+                  <div class="subtitle">1947-2016</div>
+              </div>
+              <div class="composer" id="musician-5">
+                  <img src="https://www.theplace2.ru/archive/freddie_mercury/img/freddie_mercury_in_stockholm_10th_june_1986.jpg" alt="Freddie Mercury">
+                  <p>Freddie Mercury</p>
+                  <div class="subtitle">1946-1991</div>
+              </div>
+              <div class="composer" id="musician-6">
+                  <img src="https://i.pinimg.com/originals/f9/83/88/f98388f68d9da491b25089dec44322bd.jpg" alt="Prince">
+                  <p>Prince</p>
+                  <div class="subtitle">1958-2016</div>
+              </div>
+          </div>
+            <div class="nav-buttons">
+              <button class="nav-btn prev-btn"><</button>
+              <button class="nav-btn next-btn">></button>
+            </div>
+        </div>  
+      </div> 
     </div>
 
     <div class="section-3">
 
     </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const composers = document.querySelectorAll('.composer');
+      const totalComposers = composers.length;
+      let currentIndex = 2; //start with middle composer active
+      
+      function updateCarousel() {
+        composers.forEach((composer, index) => {
+          composer.classList.remove('active');
+          
+          //calculate disantce
+          const distance = calculateDistance(index, currentIndex, totalComposers);
+          
+          if (distance === 0) {
+            //center composer
+            composer.style.left = '50%';
+            composer.style.opacity = '1';
+            composer.style.transform = 'translateX(-50%) scale(1.2)';
+            composer.classList.add('active');
+            composer.style.zIndex = 10;
+          } else if (distance === -1 || distance === 1) {
+            //immediate neighbors
+            const direction = distance < 0 ? -1 : 1;
+            composer.style.left = 50 + (direction * 20) + '%';
+            composer.style.opacity = '0.8';
+            composer.style.transform = 'translateX(-50%) scale(1)';
+            composer.style.zIndex = 5;
+          } else if (distance === -2 || distance === 2) {
+            //outer positions
+            const direction = distance < 0 ? -1 : 1;
+            composer.style.left = 50 + (direction * 35) + '%';
+            composer.style.opacity = '0.6';
+            composer.style.transform = 'translateX(-50%) scale(0.8)';
+            composer.style.zIndex = 1;
+          } else {
+            //smooth fade out
+            composer.style.opacity = '0';
+            composer.style.transform = 'translateX(-50%) scale(0.7)';
+            composer.style.left = '50%'; // keep them centered to avoid layout jumps
+            composer.style.zIndex = 0;
+          }
+        });
+      }
+      
+      function calculateDistance(index, currentIndex, total) {
+        let distance = index - currentIndex;
+        if (Math.abs(distance) > Math.floor(total / 2)) {
+          distance = distance > 0 ? distance - total : distance + total;
+        }
+        return distance;
+      }
+      
+      function nextComposer() {
+        currentIndex = (currentIndex + 1) % totalComposers;
+        updateCarousel();
+      }
+      
+      function prevComposer() {
+        currentIndex = (currentIndex - 1 + totalComposers) % totalComposers;
+        updateCarousel();
+      }
+      
+      //initialize carousel
+      updateCarousel();
+      
+      //add event listeners
+      document.querySelector('.next-btn').addEventListener('click', nextComposer);
+      document.querySelector('.prev-btn').addEventListener('click', prevComposer);
+  }); 
+</script>
 </body>

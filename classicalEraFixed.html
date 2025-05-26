@@ -3,341 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/Styles/classicalEra.css">
+
   <title>Classical Era Music</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Georgia', serif;
-      background-color: #f5f2e9;
-      color: #333;
-      overflow-x: hidden;
-    }
-
-    body::-webkit-scrollbar {
-      display: none;
-    }
-    
-    .header {
-      width: 100%;
-      height: 100vh;
-      background-color: #2c3e50;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .header img {
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      object-fit: cover;
-      opacity: 0.85;
-    }
-    
-    .header-title {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 42px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-    }
-    
-    /*section 2*/
-    .center-section {
-      width: 100%;
-      height: 100vh;
-      background-color: #f5efe0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .spinning-text-container {
-      width: 600px;
-      height: 600px;
-      position: relative;
-    }
-    
-    .spinning-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      transform-origin: center;
-      animation: spin 20s linear infinite;
-    }
-    
-    @keyframes spin {
-      0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-      }
-      100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-      }
-    }
-
-    .music-button {
-      animation: welcome-in 0.5s ease-in-out;
-      background: none;
-      font-size: 1em;
-      padding: 7px;
-      box-shadow: 5px 5px 0 1px black;
-      transition: 0.2s;
-      border: none;
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 20;
-      background-color: rgba(255, 255, 255, 0.85);
-    }
-
-    .music-button:hover {
-      box-shadow: 3px 3px 0 1px black;
-      transform: translate(-48%, -48%); 
-    }
-
-    .music-button:active {
-      box-shadow: none;
-      transform: translate(-45%, -45%); 
-    }
-
-    /*
-    .instrument {
-      position: absolute;
-      width: auto;
-      height: auto;
-    }
-    
-    .violin {
-      top: 10px;
-      right: 30px;
-    }
-    
-    .piano {
-      top: 20px;
-      right: -80px;
-    }
-    
-    .horn {
-      bottom: 20px;
-      left: -80px;
-    }
-    
-    .clarinet {
-      bottom: -10px;
-      right: 30px;
-    }
-    
-    .trumpet {
-      bottom: 20px;
-      left: 30px;
-    }
-    */
-    
-    /* section 3 */
-    .hall-of-fame {
-      width: 100%;
-      height: 100vh;
-      /*margin-top: 50px;
-      margin-bottom: 50px;
-      padding: 40px 0;*/
-      text-align: center;
-      background-color: #f5f2e9;
-    }
-    
-    .hall-of-fame h2 {
-      font-size: 28px;
-      margin-top: 50px;
-      margin-bottom: 50px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 10px;
-      display: inline-block;
-    }
-
-    .composer {
-        position: absolute;
-        transition: all 0.6s ease;
-        width: 180px;
-        opacity: 0.7;
-        transform: translateX(-50%) scale(1);
-    }
-
-    .composer.active {          
-        z-index: 10;
-        opacity: 1;
-        transform: translateX(-50%) scale(1.3); /* enlarge proportionally */
-    }
-
-    .composer img {
-        width: 100%;
-        height: 240px;              /* set consistent height */
-        object-fit: cover;          /* maintain ratio and crop if needed */
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .composer p {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    
-    .composer .subtitle {
-        font-size: 14px;
-        font-style: italic;
-        margin-top: 5px;
-        margin-bottom: 20px; 
-    }
-    
-    .carousel-wrapper {
-        margin-top: 80px; 
-    }
-
-    .carousel-container {
-      position: relative;
-      height: 350px;
-      margin: 0 auto;
-      overflow: visible;
-      width: 90%;
-    }
-    
-    .carousel {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-
-    .nav-buttons {
-      position: absolute;
-      top: 40%;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-    }
-    
-    .nav-btn {
-      background-color: #2c3e50;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      margin: 0 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-      z-index: 20;
-    }
-    
-    .nav-btn:hover {
-      background-color: #1a2a3a;
-    }
-
-    /* section 4*/
-    .section-4 {
-      width: 100%;
-      height: 100vh;
-      /*margin-top: 100px;
-      margin-bottom: 10px;
-      padding: 40px 0;*/
-      text-align: center;
-      background-color: #ffdcc8;
-    }
-    
-    .text-box {
-      max-height: 500px;
-      overflow-y: auto;
-      padding: 10px;
-    }
-
-    .text-box::-webkit-scrollbar {
-      width: 0px;
-      background: transparent;
-    }
-    
-    #text-output {
-      font-size: 1.2rem;
-      line-height: 2;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: left;
-    }
-      
-    .fade-in {
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .fade-in.show {
-      opacity: 1;
-    }
-    
-    #fun-fact-h2 {
-      font-size: 28px;
-      margin-top: 50px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 10px;
-      display: inline-block;
-    }
-
-    .section-4-title {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    #text-box {
-      opacity: 0;
-      transition: opacity 0.5s ease-in;
-    }
-
-    #text-box.show {
-      opacity: 1;
-    }
-
-    button {
-      animation: welcome-in 0.5s ease-in-out;
-      background: none;
-      font-size: 1em;
-      padding: 7px;
-      box-shadow: 5px 5px 0 1px black;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      box-shadow: 3px 3px 0 1px black;
-      transform: translateX(2px) translateY(2px);
-    }
-
-    button:active {
-      box-shadow: none;
-      transform: translateX(5px) translateY(5px);
-    }
-
-  </style>
 </head>
 <body>
   <div class="header">
@@ -348,23 +16,30 @@
   <div class="center-section">
     <div class="spinning-text-container">
       <button id="music-play-btn" class="music-button">
-        <svg id="play-icon" width="38" height="38" viewBox="0 0 38 38" fill="none" style="display: block;">
-          <circle cx="19" cy="19" r="18" stroke="#c0392b" stroke-width="2"/>
-          <polygon points="14,11 28,19 14,27" fill="#c0392b"/>
+        <svg id="play-icon" width="38" height="38" viewBox= "0 0 24 24" fill="none" style="display: block;" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM10.6935 15.8458L15.4137 13.059C16.1954 12.5974 16.1954 11.4026 15.4137 10.941L10.6935 8.15419C9.93371 7.70561 9 8.28947 9 9.21316V14.7868C9 15.7105 9.93371 16.2944 10.6935 15.8458Z" fill="#234a59"></path>
+          </g>
         </svg>
-        <svg id="pause-icon" width="38" height="38" viewBox="0 0 38 38" fill="none" style="display: none;">
-          <circle cx="19" cy="19" r="18" stroke="#c0392b" stroke-width="2"/>
-          <rect x="13" y="11" width="4" height="16" fill="#c0392b"/>
-          <rect x="21" y="11" width="4" height="16" fill="#c0392b"/>
+
+        <svg id="pause-icon" width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM8.07612 8.61732C8 8.80109 8 9.03406 8 9.5V14.5C8 14.9659 8 15.1989 8.07612 15.3827C8.17761 15.6277 8.37229 15.8224 8.61732 15.9239C8.80109 16 9.03406 16 9.5 16C9.96594 16 10.1989 16 10.3827 15.9239C10.6277 15.8224 10.8224 15.6277 10.9239 15.3827C11 15.1989 11 14.9659 11 14.5V9.5C11 9.03406 11 8.80109 10.9239 8.61732C10.8224 8.37229 10.6277 8.17761 10.3827 8.07612C10.1989 8 9.96594 8 9.5 8C9.03406 8 8.80109 8 8.61732 8.07612C8.37229 8.17761 8.17761 8.37229 8.07612 8.61732ZM13.0761 8.61732C13 8.80109 13 9.03406 13 9.5V14.5C13 14.9659 13 15.1989 13.0761 15.3827C13.1776 15.6277 13.3723 15.8224 13.6173 15.9239C13.8011 16 14.0341 16 14.5 16C14.9659 16 15.1989 16 15.3827 15.9239C15.6277 15.8224 15.8224 15.6277 15.9239 15.3827C16 15.1989 16 14.9659 16 14.5V9.5C16 9.03406 16 8.80109 15.9239 8.61732C15.8224 8.37229 15.6277 8.17761 15.3827 8.07612C15.1989 8 14.9659 8 14.5 8C14.0341 8 13.8011 8 13.6173 8.07612C13.3723 8.17761 13.1776 8.37229 13.0761 8.61732Z" fill="#234a59"></path>
+          </g>
         </svg>
-        <audio id="music-audio" src="Assets/Homepage/Fur élise - RAW.mp3"></audio>
+        
+        <audio id="music-audio" src="/Assets/audio/Fur élise - RAW.mp3"></audio>
       </button>
       <div class="spinning-text">
         <svg viewBox="0 0 500 500">
           <defs>
             <path id="circle-text-path" d="M 250,250 m -150,0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0" />
           </defs>
-          <text fill="#c0392b" font-size="20.5" font-weight="bold" letter-spacing="2">
+          <text fill="#f5efe0" font-size="25" font-weight="bold" letter-spacing="2">
             <textPath href="#circle-text-path">• MUSIC IS THE POETRY OF THE AIR • MUSIC IS THE POETRY OF THE AIR •</textPath>
           </text>
         </svg>
@@ -375,6 +50,12 @@
       <!-- <img class="instrument clarinet" src="/api/placeholder/60/60" alt="Clarinet"> -->
       <!-- <img class="instrument trumpet" src="/api/placeholder/60/60" alt="Trumpet"> -->
     </div>
+  </div>
+
+  <div class="wave-border-1">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#f5efe0" fill-opacity="1" d="M0,224L60,229.3C120,235,240,245,360,229.3C480,213,600,171,720,165.3C840,160,960,192,1080,213.3C1200,235,1320,245,1380,250.7L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+    </svg>
   </div>
   
   <div class="hall-of-fame">
@@ -426,10 +107,17 @@
     </div> 
   </div>
 
+  <div class="wave-border-2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#f5efe0" fill-opacity="1" d="M0,64L60,80C120,96,240,128,360,117.3C480,107,600,53,720,48C840,43,960,85,1080,85.3C1200,85,1320,43,1380,21.3L1440,0L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+    </svg>
+
+  </div>
+
   <div class="section-4">
     <div class="section-4-wrapper">
       <div class="section-4-title">
-        <h2 id="fun-fact-h2">Fun Fact</h2>
+        <h2 id="fun-fact-h2">Fun Facts</h2>
         <div style="display: flex; gap: 10px;">
           <button type="button" id="start-btn">Start</button>
         </div>
@@ -440,173 +128,7 @@
     </div>
   </div>
 
+  <script defer src="/Scripts/classicalEra.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const playBtn = document.getElementById('music-play-btn');
-      const audio = document.getElementById('music-audio');
-      let isPlaying = false;
-
-      playBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (!isPlaying) {
-          audio.play();
-          isPlaying = true;
-          playBtn.style.opacity = '0.6';
-          document.getElementById('play-icon').style.display = 'none';
-          document.getElementById('pause-icon').style.display = 'block';
-        } else {
-          audio.pause();
-          isPlaying = false;
-          playBtn.style.opacity = '1';
-          document.getElementById('play-icon').style.display = 'block';
-          document.getElementById('pause-icon').style.display = 'none';
-        }
-        });
-
-        audio.addEventListener('ended', function() {
-          isPlaying = false;
-          playBtn.style.opacity = '1';
-        });
-      });
-
-    // section 3 - carousel of composers
-    document.addEventListener('DOMContentLoaded', function() {
-      const composers = document.querySelectorAll('.composer');
-      const totalComposers = composers.length;
-      let currentIndex = 2; //start with middle composer active
-      
-      function updateCarousel() {
-        composers.forEach((composer, index) => {
-          composer.classList.remove('active');
-          
-          //calculate disantce
-          const distance = calculateDistance(index, currentIndex, totalComposers);
-          
-          if (distance === 0) {
-            //center composer
-            composer.style.left = '50%';
-            composer.style.opacity = '1';
-            composer.style.transform = 'translateX(-50%) scale(1.2)';
-            composer.classList.add('active');
-            composer.style.zIndex = 10;
-          } else if (distance === -1 || distance === 1) {
-            //immediate neighbors
-            const direction = distance < 0 ? -1 : 1;
-            composer.style.left = 50 + (direction * 20) + '%';
-            composer.style.opacity = '0.8';
-            composer.style.transform = 'translateX(-50%) scale(1)';
-            composer.style.zIndex = 5;
-          } else if (distance === -2 || distance === 2) {
-            //outer positions
-            const direction = distance < 0 ? -1 : 1;
-            composer.style.left = 50 + (direction * 35) + '%';
-            composer.style.opacity = '0.6';
-            composer.style.transform = 'translateX(-50%) scale(0.8)';
-            composer.style.zIndex = 1;
-          } else {
-            //smooth fade out
-            composer.style.opacity = '0';
-            composer.style.transform = 'translateX(-50%) scale(0.7)';
-            composer.style.left = '50%'; // keep them centered to avoid layout jumps
-            composer.style.zIndex = 0;
-          }
-        });
-      }
-      
-      function calculateDistance(index, currentIndex, total) {
-        let distance = index - currentIndex;
-        if (Math.abs(distance) > Math.floor(total / 2)) {
-          distance = distance > 0 ? distance - total : distance + total;
-        }
-        return distance;
-      }
-      
-      function nextComposer() {
-        currentIndex = (currentIndex + 1) % totalComposers;
-        updateCarousel();
-      }
-      
-      function prevComposer() {
-        currentIndex = (currentIndex - 1 + totalComposers) % totalComposers;
-        updateCarousel();
-      }
-      
-      //initialize carousel
-      updateCarousel();
-      
-      //add event listeners
-      document.querySelector('.next-btn').addEventListener('click', nextComposer);
-      document.querySelector('.prev-btn').addEventListener('click', prevComposer);
-      
-      //auto rotate every 5 seconds
-      //setInterval(nextComposer, 5000);
-
-      // section 4 - animated fun fact text
-      
-      const sentences = [
-          "• Did you know? Beethoven continued to compose music even after losing his hearing.",
-          "• Beethoven initially intended to dedicate his third symphony, the “Eroica,” to Napoleon Bonaparte, but scratched out the dedication when he learned that Napoleon had declared himself emperor.",
-          "• Mozart was only 6 years old when he began composing music and was already performing for European royalty at age 8.",
-          "• Bach had 20 children, many of whom went on to become successful musicians themselves.",
-          "• The famous composer Franz Liszt was known for his showmanship as a pianist, often leaping off the piano bench and playing with incredible speed and dexterity.",
-          "• The opera “The Barber of Seville” by Rossini was originally a flop, receiving poor reviews and low ticket sales, but later became one of the most beloved operas of all time.",
-          "• The legendary composer and pianist Chopin suffered from tuberculosis and died at the young age of 39.",
-          "• The famous “Wedding March” by Mendelssohn, commonly played at weddings today, was originally part of his incidental music for a production of Shakespeare’s “A Midsummer Night’s Dream.”",
-          "• Tchaikovsky’s “1812 Overture” includes actual cannons as part of the instrumentation and is often performed as a patriotic piece in Russia.",
-          "• Beethoven’s Ninth Symphony, with its iconic “Ode to Joy” finale, was the first major symphony to include a chorus singing in addition to the orchestra.",
-          "• The “Moonlight” Sonata, one of Beethoven’s most famous piano pieces, was not given its nickname by the composer himself but rather by a music critic several years after Beethoven’s death."
-        ];
-
-      const textDiv = document.getElementById("text-output");
-      const textBox = document.getElementById("text-box");
-      const startBtn = document.getElementById("start-btn");
-
-      const speed = 30;
-      let sentenceIndex = 0;
-      let charIndex = 0;
-      let currentLine;
-      let typingStarted = false;
-
-    function typeNextChar() {
-      if (!currentLine) {
-        currentLine = document.createElement("div");
-        currentLine.classList.add("line");
-        textDiv.appendChild(currentLine);
-      }
-
-      const sentence = sentences[sentenceIndex];
-      if (charIndex < sentence.length) {
-        const span = document.createElement("span");
-        span.textContent = sentence[charIndex];
-        span.classList.add("fade-in");
-        currentLine.appendChild(span);
-        requestAnimationFrame(() => span.classList.add("show"));
-        charIndex++;
-        //auto scroll
-        textBox.scrollTop = textBox.scrollHeight;
-
-        setTimeout(typeNextChar, speed);
-      } else {
-        sentenceIndex++;
-        charIndex = 0;
-        currentLine = null;
-        if (sentenceIndex < sentences.length) {
-          setTimeout(typeNextChar, 1000);
-        }
-      }
-    }
-
-    startBtn.addEventListener("click", () => {
-      if (!typingStarted) {
-        typingStarted = true;
-        startBtn.style.display = "none";
-        textBox.style.display = "block";
-        textBox.classList.add("show");
-        typeNextChar();
-      }
-    });
-  });
-</script>
 </body>
 </html>

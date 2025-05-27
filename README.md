@@ -10,11 +10,16 @@ An interactive multimedia website that lets users explore different historical e
 ## 📂 Project Structure
 
 ```plaintext
-├── index.html          # Landing page
-├── style.css           # Main styling
-├── script.js           # Interactive behavior
-├── /assets             # Images, audio, and other media
-│   ├── Homepage/
-│   ├── classical-era/
-│   ├── belle-epoque/
-│   └── the 80s/
+├── index.html                # main page
+├── classicalEraFixed.html    # classical era page
+├── retroEra.html             # retro era page
+├── /assets                   # audio, image, etc.
+│   ├── image/
+│   └── audio/
+├── /styles                  # designs
+│   ├── classicalEra.css
+│   └── homepage.css
+├── /scripts                 # scripts
+│   ├── classicalEra.js
+│   └── homepage.js
+

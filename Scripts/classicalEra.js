@@ -28,6 +28,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+//intrument animation
+document.addEventListener("DOMContentLoaded", () => {
+  const instruments = document.querySelectorAll('.instrument');
+
+  const positions = [
+    { top: '10%', left: '20%' },
+    { top: '20%', left: '65%' },
+    { top: '50%', left: '20%' },
+    { top: '65%', left: '75%' },
+    { top: '80%', left: '10%' }
+  ];
+
+  instruments.forEach((img, i) => {
+    img.style.top = positions[i].top;
+    img.style.left = positions[i].left;
+  });
+});
+
+
 // section 3 - carousel of composers
 document.addEventListener('DOMContentLoaded', function() {
     const composers = document.querySelectorAll('.composer');

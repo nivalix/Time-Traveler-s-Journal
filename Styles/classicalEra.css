@@ -140,6 +140,7 @@ body::-webkit-scrollbar {
     width: 100%;
     background-color: var(--secondary-color);
     overflow-y: hidden;
+    margin-top: -1%;
     margin-bottom: 0%;
 }
     

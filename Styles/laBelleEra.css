@@ -80,7 +80,7 @@ body::-webkit-scrollbar {
 }
 
 .section-2-content {
-    display: flex;
+    display: block;
     align-items: center;    
     padding: 100px 120px 60px;
 }
@@ -94,7 +94,7 @@ body::-webkit-scrollbar {
 
 .section-2-border {
     border: 1px solid #ccc;
-    width: 200%;
+    width: auto;
 }
 
 .section-2-subtitle {
@@ -107,7 +107,7 @@ body::-webkit-scrollbar {
 .section-2-images {
     column-count: 3;
     column-gap: 40px;
-    padding: 10px 120px 60px;
+    padding-top: 10px;
 }
 
 .artwork {
@@ -151,7 +151,7 @@ body::-webkit-scrollbar {
 }
 
 .section-3-content {
-    display: flex;
+    display: block;
     align-items: center;    
     padding: 100px 120px 60px;
 }
@@ -165,7 +165,7 @@ body::-webkit-scrollbar {
 
 .section-3-border {
     border: 1px solid var(--dark-color);
-    width: 200%;
+    width: auto;
 }
 
 .section-3-subtitle {
@@ -173,4 +173,71 @@ body::-webkit-scrollbar {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     color: var(--secondary-color);
+}
+
+.section-3-description {
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 200px;
+    color: var(--dark-color);
+}
+
+.section-3-description img {
+    width: 30%;
+    height: auto;
+    display: block;
+}
+
+.info-dropdowns {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    font-family: 'Georgia', serif;
+    padding: 18px 0;
+    max-width: 700px; /* Match title width */
+}
+
+.info-box {
+    font-size: 35px;
+    padding: 18px 0;
+    border-bottom: 2px solid var(--dark-color);
+    color: var(--dark-color);
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.arrow {
+    font-size: 2rem;
+    transition: transform 0.2s ease;
+}
+
+.info-content {
+    font-size: 18px;
+    padding: 12px 0 0 0;
+    display: none;
+    line-height: 1.4;
+    color: var(--dark-color);
+}
+
+.info-content.active {
+    display: block;
+}
+
+.arrow.rotate {
+    transform: rotate(180deg);
+}
+
+.arrow:hover,
+.info-box:hover {
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+.info-box.active .arrow {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
 }

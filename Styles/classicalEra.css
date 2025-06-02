@@ -88,7 +88,7 @@ body::-webkit-scrollbar {
 .music-button {
     animation: welcome-in 0.5s ease-in-out;
     background: none;
-    font-size: 1em;
+    font-size: 16px;
     padding: 7px;
     box-shadow: 5px 5px 0 1px var(--dark-color);
     transition: 0.2s;
@@ -288,7 +288,7 @@ body::-webkit-scrollbar {
 }
 
 #text-output {
-    font-size: 1.2rem;
+    font-size: 19px;
     line-height: 2;
     max-width: 900px;
     margin: 0 auto;

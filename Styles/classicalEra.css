@@ -18,9 +18,9 @@ body {
 }
 
 body::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
-    
+
 .header {
     width: 100%;
     height: 100vh;
@@ -29,7 +29,6 @@ body::-webkit-scrollbar {
     overflow: hidden;
 }
 
-    
 .header img {
     width: 100%;
     height: 100%;
@@ -37,7 +36,7 @@ body::-webkit-scrollbar {
     object-fit: cover;
     opacity: 0.85;
 }
-    
+
 .header-title {
     position: absolute;
     top: 50%;
@@ -48,25 +47,25 @@ body::-webkit-scrollbar {
     font-style: italic;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
-    
-/*section 2*/
+
+/* section 2 */
 .center-section {
     width: 100%;
     height: auto;
     background-color: var(--secondary-color);
     display: flex;
-    justify-content:center;
-    align-items:end;
+    justify-content: center;
+    align-items: end;
     position: relative;
     overflow: hidden;
 }
-    
+
 .spinning-text-container {
     width: 600px;
     height: 600px;
-    position:relative;
+    position: relative;
 }
-    
+
 .spinning-text {
     position: absolute;
     top: 60%;
@@ -76,7 +75,7 @@ body::-webkit-scrollbar {
     transform-origin: center;
     animation: spin 20s linear infinite;
 }
-    
+
 @keyframes spin {
     0% {
         transform: translate(-50%, -50%) rotate(0deg);
@@ -111,29 +110,35 @@ body::-webkit-scrollbar {
 
 .music-button:hover {
     box-shadow: 3px 3px 0 1px var(--dark-color);
-    transform: translate(-48%, -48%); 
+    transform: translate(-48%, -48%);
 }
 
 .music-button:active {
     box-shadow: none;
-    transform: translate(-45%, -45%); 
+    transform: translate(-45%, -45%);
 }
 
 .floating {
-  position: absolute;
+    position: absolute;
 }
 
 .floating img {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-  animation: float 4s ease-in-out infinite;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    animation: float 4s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .wave-border-1 {
@@ -143,7 +148,7 @@ body::-webkit-scrollbar {
     margin-top: -1%;
     margin-bottom: 0%;
 }
-    
+
 /* section 3 */
 .hall-of-fame {
     width: 100%;
@@ -154,7 +159,7 @@ body::-webkit-scrollbar {
     text-align: center;
     background-color: var(--primary-color);
 }
-    
+
 .hall-of-fame h2 {
     font-size: 55px;
     font-style: italic;
@@ -175,7 +180,7 @@ body::-webkit-scrollbar {
     transform: translateX(-50%) scale(1);
 }
 
-.composer.active {          
+.composer.active {
     z-index: 10;
     opacity: 1;
     transform: translateX(-50%) scale(1.3); /* enlarge proportionally */
@@ -183,8 +188,8 @@ body::-webkit-scrollbar {
 
 .composer img {
     width: 100%;
-    height: 240px;              /* set consistent height */
-    object-fit: cover;          /* maintain ratio and crop if needed */
+    height: 240px; /* set consistent height */
+    object-fit: cover; /* maintain ratio and crop if needed */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
@@ -196,17 +201,17 @@ body::-webkit-scrollbar {
     font-weight: bold;
     color: var(--secondary-color);
 }
-    
+
 .composer .subtitle {
     font-size: 14px;
     font-style: italic;
     margin-top: 5px;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
     color: var(--secondary-color);
 }
-    
+
 .carousel-wrapper {
-    margin-top: 80px; 
+    margin-top: 80px;
 }
 
 .carousel-container {
@@ -216,7 +221,7 @@ body::-webkit-scrollbar {
     overflow: visible;
     width: 90%;
 }
-    
+
 .carousel {
     display: flex;
     justify-content: center;
@@ -233,10 +238,9 @@ body::-webkit-scrollbar {
     width: 100%;
     display: flex;
     justify-content: space-between;
-
     transform: translateY(-50%);
 }
-    
+
 .nav-btn {
     background-color: var(--secondary-color);
     color: white;
@@ -248,7 +252,7 @@ body::-webkit-scrollbar {
     font-size: 16px;
     z-index: 20;
 }
-    
+
 .nav-btn:hover {
     background-color: var(--accent-color);
 }
@@ -261,7 +265,7 @@ body::-webkit-scrollbar {
     margin-bottom: 0%;
 }
 
-/* section 4*/
+/* section 4 */
 .section-4 {
     width: 100%;
     height: auto;
@@ -271,7 +275,7 @@ body::-webkit-scrollbar {
     text-align: center;
     background-color: var(--tertiary-color);
 }
-    
+
 .text-box {
     max-height: 500px;
     overflow-y: auto;
@@ -282,7 +286,7 @@ body::-webkit-scrollbar {
     width: 0px;
     background: transparent;
 }
-    
+
 #text-output {
     font-size: 1.2rem;
     line-height: 2;
@@ -290,7 +294,7 @@ body::-webkit-scrollbar {
     margin: 0 auto;
     text-align: left;
 }
-      
+
 .fade-in {
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -299,7 +303,7 @@ body::-webkit-scrollbar {
 .fade-in.show {
     opacity: 1;
 }
-    
+
 #fun-fact-h2 {
     font-size: 55px;
     font-style: italic;
@@ -343,7 +347,7 @@ button {
     box-shadow: 5px 5px 0 1px #9e9383;
     transition: 0.2s;
 }
-       
+
 button:hover {
     box-shadow: 3px 3px 0 1px #9e9383;
     transform: translateX(5px) translateY(5px);

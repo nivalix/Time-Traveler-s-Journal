@@ -24,7 +24,7 @@ body::-webkit-scrollbar {
 /* Section 1 */
 .section-1 {
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     background-color: var(--primary-color);
     position: relative;
     overflow: hidden;
@@ -74,6 +74,13 @@ body::-webkit-scrollbar {
     box-shadow: 8px 8px 0px #1a1a1a;
     display: block;
     max-width: 100%;
+}
+
+.wave-border-1 {
+    width: 100%;
+    background-color: var(--primary-color);
+    overflow-y: hidden;
+    margin-bottom: -1%;
 }
 
 /* Section 2 */
@@ -148,11 +155,18 @@ body::-webkit-scrollbar {
     color: var(--primary-color);
 }
 
+.wave-border-2 {
+    width: 100%;
+    background-color: var(--tertiary-color);
+    overflow-y: hidden;
+    margin-top: -1%;
+}
+
 /* Section 3 */
 .section-3 {
     width: 100%;
     height: 100vh;
-    background-color: #DED7C7;
+    background-color: var(--tertiary-color);
     position: relative;
     overflow: hidden;
 }
@@ -160,7 +174,7 @@ body::-webkit-scrollbar {
 .section-3-content {
     display: block;
     align-items: center;
-    padding: 100px 120px 60px;
+    padding: 80px 120px 60px;
 }
 
 .section-3-title h2 {
@@ -217,7 +231,7 @@ body::-webkit-scrollbar {
 .music-button {
     animation: welcome-in 0.5s ease-in-out;
     background: none;
-    font-size: 1em;
+    font-size: 16px;
     padding: 7px;
     box-shadow: 5px 5px 0 1px var(--dark-color);
     transition: 0.2s;
@@ -269,7 +283,7 @@ body::-webkit-scrollbar {
 }
 
 .arrow {
-    font-size: 2rem;
+    font-size: 32px;
     transition: transform 0.2s ease;
 }
 
@@ -279,6 +293,7 @@ body::-webkit-scrollbar {
     display: none;
     line-height: 1.4;
     color: var(--dark-color);
+    text-align: justify;
 }
 
 .info-content.active {

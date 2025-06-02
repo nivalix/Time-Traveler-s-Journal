@@ -141,12 +141,13 @@ body::-webkit-scrollbar {
 }
 
 .classic-card {
-    background-color: #c43131;
+    background-image: url(/Assets/image/classical1.jpg);
+    background-position: center;
+    background-size: cover;
     position: relative;
 }
 
 .classic-card::before {
-    content: "The Classical Era";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -158,12 +159,13 @@ body::-webkit-scrollbar {
 }
 
 .belle-card {
-    background-color: #0f2b2b;
+    background-image: url(/Assets/image/belle1.png);
+    background-position: center;
+    background-size: cover;
     position: relative;
 }
 
 .belle-card::before {
-    content: "La Belle Époque";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -175,12 +177,14 @@ body::-webkit-scrollbar {
 }
 
 .retro-card {
-    background-color: #492900;
+    background-image: url(/Assets/image/retro1.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
     position: relative;
 }
 
 .retro-card::before {
-    content: "Retro Pop";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -247,7 +251,7 @@ body::-webkit-scrollbar {
 }
 
 .menu-item {
-    background-color: #e04245;
+    background-color: var(--footer-color);
     color: white;
     font-size: 18px;
     font-weight: bold;
@@ -262,11 +266,12 @@ body::-webkit-scrollbar {
 }
 
 .menu-item:nth-child(odd) {
-    background-color: #d13e3e;
+    background-color: var(--footer-color);
 }
 
 .menu-item:hover{
-    background-color:rgba(255, 255, 255, 0.2);
+    background-color:var(--primary-color);
+    
 
 }
 
@@ -345,8 +350,11 @@ body::-webkit-scrollbar {
     text-align: justify;
 }
 
-.dark-box {
-    background-color: #1a0a0a;
+.image-box {
+    background-color: var(--footer-color);
+    
+    background-position: center;
+    background-size: cover;
     padding: 50px;
     height: 400px;
     display: flex;
@@ -357,15 +365,16 @@ body::-webkit-scrollbar {
     overflow: hidden;
 }
 
-.dark-box::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(196, 49, 49, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-    z-index: 1;
+.classical-box {
+    background-image: url(/Assets/image/Watercolor_painting_in_britain.jpeg);
+}
+
+.belle-box {
+    background-image: url(/Assets/image/Andre_Herpin.jpg);
+}
+
+.retro-box {
+    background-image: url(/Assets/image/bob_ross.jpeg);
 }
 
 

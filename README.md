@@ -3,8 +3,8 @@ An interactive multimedia website that lets users explore different historical e
 
 ## Features
 - Hoverable images that reveal menus for each era
-- Interactive objects (soon)
-- Embedded music and ambient sounds per era (soon)
+- Interactive objects
+- Embedded music and ambient sounds per era
 - Responsive layout using HTML, CSS, and JavaScript
 
 ## 📂 Project Structure

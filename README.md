@@ -10,16 +10,26 @@ An interactive multimedia website that lets users explore different historical e
 ## 📂 Project Structure
 
 ```plaintext
-├── index.html                # main page
-├── classicalEraFixed.html    # classical era page
-├── retroEra.html             # retro era page
 ├── /assets                   # audio, image, etc.
-│   ├── image/
-│   └── audio/
-├── /styles                  # designs
-│   ├── classicalEra.css
-│   └── homepage.css
-├── /scripts                 # scripts
-│   ├── classicalEra.js
-│   └── homepage.js
+│     ├── audio/
+│     └── image/
+│
+├── /scripts                  # scripts
+│     ├── classicalEra.js
+│     ├── homePage.js
+│     ├── laBelle.js
+│     └── retro.js
+│
+├── /styles                   # designs
+│     ├── classicalEra.css
+│     ├── homePage.css
+│     ├── laBelleEra.css
+│     └── retro.css
+│
+├── classicalEraFixed.html    # classical era page
+├── index.html                # main page
+├── laBelleEra.html           # la belle era page
+└── retroEra.html             # retro era page
+
+
 
